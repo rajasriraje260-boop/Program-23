@@ -1,0 +1,27 @@
+class Solution:
+    def binarysearch(self, arr, k):
+        low = 0
+        high = len(arr) - 1
+        result = -1
+        
+        while low <= high:
+            # Calculate mid to avoid overflow in some languages
+            mid = low + (high - low) // 2
+            
+            if arr[mid] == k:
+                # Potential answer found! 
+                result = mid
+                # But keep looking left for the SMALLEST index
+                high = mid - 1
+                
+            elif arr[mid] < k:
+                # Target is in the right half
+                low = mid + 1
+            else:
+                # Target is in the left half
+                high = mid - 1
+                
+        return result
+
+        # Program-23
+Program 23
